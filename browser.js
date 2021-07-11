@@ -7,7 +7,7 @@
   that the browser can't do and vice versa.
 */
 
-const hash = typeof crypto === 'object'
+const hash = globalThis.crypto?.subtle
   ? crypto.subtle.digest.bind(crypto.subtle, 'sha-1')
   : () => Promise.reject(new Error('no web crypto support'))
 
@@ -111,8 +111,6 @@ const toUint8 = x => x instanceof ArrayBuffer
       ? x
       : new Uint8Array(x.buffer, x.byteOffset, x.byteLength)
     : text2arr(x)
-
-const MAX_BYTES = 65536
 
 /** @param {ArrayBufferView} view */
 const getRandomValues = view => crypto.getRandomValues(view)
