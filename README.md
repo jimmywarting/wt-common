@@ -1,6 +1,6 @@
 # Common package
 
-This is a common utility package to abstrack away the differences between a few `node:buffer` utilities that regular `Uint8Array` can't do on it's own or with the help of any other tools like TextEncoder/TextDecoder or DataView, it's mainly used for hex conversion and converting mostly anything (string, ArrayBuffer, ArrayBufferView) to Uint8Arrays with `toUint8()`
+This is a common utility package to abstrack away the differences between a few `node:buffer` utilities that regular `Uint8Array` can't do on it's own or with the help of any other tools like TextEncoder/TextDecoder or DataView, it's mainly used for hex conversion and converting mostly anything (string, ArrayBuffer, ArrayBufferView) to Uint8Arrays with `toUint8()` it also exports a promise based sha1 from node crypto and web crypto
 
 - `arr2hex(arr: Uint8Array): string`
 - `hex2arr(hex: string): Uint8Array`
