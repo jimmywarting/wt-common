@@ -7,9 +7,10 @@
 
 // could technically use web crypto in node also
 // but it was introduced in v15... so we need to wait
-const { createHash: hash } = require('crypto')
+const { randomFillSync, createHash: hash } = require('crypto')
 
 /** Convert anything to Uint8Array without a copy */
+/** @returns {Uint8Array} */
 const toUint8 = x => x instanceof ArrayBuffer
   ? new Uint8Array(x)
   : ArrayBuffer.isView(x)
@@ -52,10 +53,13 @@ const hex2binary = str => Buffer.from(str, 'hex').toString('binary')
  */
 const sha1 = uint8 => Promise.resolve(toUint8(hash('sha1').update(uint8).digest()))
 
-const text2arr = str => toUint8(Buffer.from(str, 'utf8'))
+const text2arr = str => toUint8(Buffer.from(String(str), 'utf8'))
 
 /** @param {ArrayBufferView} view */
 const arr2text = view => Buffer.from(view.buffer, view.byteOffset, view.byteLength).toString('hex')
+
+/** @param {ArrayBufferView} view */
+const getRandomValues = view => randomFillSync(view)
 
 exports.toUint8 = toUint8
 exports.arr2hex = arr2hex
@@ -65,3 +69,4 @@ exports.hex2binary = hex2binary
 exports.sha1 = sha1
 exports.text2arr = text2arr
 exports.arr2text = arr2text
+exports.getRandomValues = getRandomValues

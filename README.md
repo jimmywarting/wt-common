@@ -13,5 +13,6 @@ This is a common utility package to abstrack away the differences between a few 
 
 - `sha1(view: Uint8Array): Promise<Uint8Array>`
 - `toUint8(any): Uint8Array`
+- `getRandomValues(view: ArrayBufferView): ArrayBufferView`
 
 This package was built for WebTorrent to work better cross platform and apply a [onion architecture](https://codeguru.com/csharp/csharp/cs_misc/designtechniques/understanding-onion-architecture.html)

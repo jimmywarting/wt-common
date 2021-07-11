@@ -112,6 +112,11 @@ const toUint8 = x => x instanceof ArrayBuffer
       : new Uint8Array(x.buffer, x.byteOffset, x.byteLength)
     : text2arr(x)
 
+const MAX_BYTES = 65536
+
+/** @param {ArrayBufferView} view */
+const getRandomValues = view => crypto.getRandomValues(view)
+
 exports.arr2hex = arr2hex
 exports.hex2arr = hex2arr
 exports.binary2hex = binary2hex
@@ -120,3 +125,4 @@ exports.text2arr = text2arr
 exports.arr2text = arr2text
 exports.sha1 = sha1
 exports.toUint8 = toUint8
+exports.getRandomValues = getRandomValues
